@@ -1,0 +1,11 @@
+all:
+  children:
+    kube_control_plane:
+      hosts:
+        ${indent(8,yamlencode(controller))}
+    kube_node:
+      hosts:
+        ${indent(8,yamlencode(worker))}
+    etcd:
+      children:
+        kube_control_plane:
